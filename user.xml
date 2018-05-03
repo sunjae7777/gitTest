@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+  <select id="getUeserPageList" resultType="UserVO" parameterType="map">
+  
+  select *
+  from
+  	(select rownum rn, member.*
+  	from member
+  	order by mem_id)
+  	where rn between (#{page})*#{pageSize}+1 and  #{page}*#{pageSize}
+  
+   
+  </select>
+</mapper>
